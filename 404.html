@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>页面未找到 | Harmony Music</title>
+
+  <!-- =========custom css================== -->
+  <style>
+    :root {
+      --primary-color: #6a11cb;
+      --secondary-color: #2575fc;
+      --accent-color: #ff4e8d;
+      --light-color: #f8f9fa;
+      --dark-color: #2d3436;
+      --gray-color: #636e72;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    #oopss {
+      text-align: center;
+      max-width: 800px;
+      padding: 40px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    }
+
+    #error-text img {
+      max-width: 300px;
+      margin-bottom: 30px;
+      filter: brightness(0) invert(1);
+    }
+
+    #error-text span {
+      font-size: 4rem;
+      font-weight: 800;
+      display: block;
+      margin-bottom: 20px;
+      background: linear-gradient(90deg, #ffeb3b, #ff9a3d);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .p-a {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: #e0e0e0;
+      line-height: 1.6;
+    }
+
+    .p-b {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      color: #b0b0b0;
+      font-style: italic;
+    }
+
+    .back {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--accent-color), #ff9a3d);
+      color: white;
+      padding: 15px 40px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(255, 78, 141, 0.4);
+      border: none;
+      cursor: pointer;
+    }
+
+    .back:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(255, 78, 141, 0.6);
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      #error-text span {
+        font-size: 3rem;
+      }
+      
+      .p-a {
+        font-size: 1.2rem;
+      }
+      
+      #error-text img {
+        max-width: 200px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      #error-text span {
+        font-size: 2.5rem;
+      }
+      
+      .p-a {
+        font-size: 1.1rem;
+      }
+      
+      #oopss {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div id='oopss'>
+            <div id='error-text'>
+              <img src="https://img.icons8.com/color/300/000000/audio-wave--v2.png" alt="404">
+              <span>404 页面</span>
+              <p class="p-a">
+                抱歉，您访问的页面不存在或已被移除</p>
+              <p class="p-b">
+                返回上一页，继续享受音乐之旅
+              </p>
+              <a href='index.html' class="back">返回首页</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================js-bootstrap==================================== -->
+  <script>
+    // 简单页面交互
+    document.addEventListener('DOMContentLoaded', function() {
+      const backButton = document.querySelector('.back');
+      backButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        // 添加简单的点击效果
+        this.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+          this.style.transform = '';
+          window.location.href = 'index.html';
+        }, 200);
+      });
+      
+      // 添加背景音乐图标动画
+      const musicIcon = document.querySelector('#error-text img');
+      let rotation = 0;
+      setInterval(() => {
+        rotation += 0.5;
+        musicIcon.style.transform = `rotate(${rotation}deg)`;
+      }, 50);
+    });
+  </script>
+</body>
+
+</html>

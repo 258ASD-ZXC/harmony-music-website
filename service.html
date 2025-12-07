@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>服务 | Harmony Music</title>
+
+  <!-- ==========favicon ============-->
+  <link rel="shortcut icon" href="https://img.icons8.com/color/96/000000/music.png" type="image/x-icon">
+  <!-- =========bootstrap ============-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <!-- =========fontawesome ============-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- =========animate ============-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <!-- =========custom css================== -->
+  <style>
+    :root {
+      --primary-color: #6a11cb;
+      --secondary-color: #2575fc;
+      --accent-color: #ff4e8d;
+      --light-color: #f8f9fa;
+      --dark-color: #2d3436;
+      --gray-color: #636e72;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #f9f9f9;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    .main-menu {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      box-shadow: 0 4px 20px rgba(106, 17, 203, 0.2);
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar-brand img {
+      height: 50px;
+      filter: brightness(0) invert(1);
+    }
+
+    .nav-link {
+      color: white !important;
+      font-weight: 500;
+      margin: 0 8px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: #ffeb3b !important;
+      transform: translateY(-2px);
+    }
+
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      width: 70%;
+      height: 3px;
+      background-color: #ffeb3b;
+      bottom: 0;
+      left: 15%;
+      border-radius: 2px;
+    }
+
+    .cmn-banner {
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                  url('https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center/cover;
+      min-height: 50vh;
+      display: flex;
+      align-items: center;
+      color: white;
+      position: relative;
+      padding: 80px 0;
+    }
+
+    .banner-text h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      background: linear-gradient(90deg, #ff4e8d, #ff9a3d);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .banner-text a {
+      color: #e0e0e0;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .banner-text a:hover, .banner-text a.active {
+      color: #ffeb3b;
+    }
+
+    .shadow__btn {
+      background: linear-gradient(135deg, var(--accent-color), #ff9a3d);
+      color: white;
+      border: none;
+      padding: 12px 35px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(255, 78, 141, 0.4);
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .shadow__btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(255, 78, 141, 0.6);
+      color: white;
+    }
+
+    #gallery {
+      padding: 80px 0;
+      background-color: white;
+    }
+
+    .gallery-img {
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.4s ease;
+      height: 300px;
+      margin-bottom: 20px;
+    }
+
+    .gallery-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-img:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    }
+
+    .gallery-img:hover img {
+      transform: scale(1.05);
+    }
+
+    .gallery-text {
+      margin-top: 10px;
+    }
+
+    .gallery-text h4 {
+      font-weight: 700;
+      color: var(--dark-color);
+      font-size: 1.4rem;
+      margin-bottom: 5px;
+    }
+
+    .gallery-text p {
+      color: var(--gray-color);
+      font-size: 0.95rem;
+    }
+
+    #pricing {
+      padding: 80px 0;
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+      color: white;
+    }
+
+    .common_head h4 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 20px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .common_head h4::after {
+      content: '';
+      position: absolute;
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent-color), #ff9a3d);
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+
+    .common_head p {
+      color: #b0b0b0;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .pricing-table .card {
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      padding: 40px 30px;
+      border: none;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+      transition: transform 0.4s ease;
+      height: 100%;
+      margin-bottom: 30px;
+    }
+
+    .pricing-table .card:hover {
+      transform: translateY(-10px);
+      background-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .pricing-table .title i {
+      font-size: 3rem;
+      color: var(--accent-color);
+      margin-bottom: 20px;
+    }
+
+    .pricing-table .title h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: white;
+    }
+
+    .pricing-table .price h4 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 10px;
+    }
+
+    .pricing-table .price p {
+      color: #b0b0b0;
+      margin-bottom: 30px;
+    }
+
+    .pricing-table .price h4 sup {
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    .pricing-table .option ul {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 30px;
+    }
+
+    .pricing-table .option ul li {
+      padding: 10px 0;
+      color: #e0e0e0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .pricing-table .option ul li i {
+      color: #4cd964;
+      margin-right: 10px;
+    }
+
+    .pricing-table .card a {
+      background: linear-gradient(135deg, var(--accent-color), #ff9a3d);
+      color: white;
+      padding: 12px 35px;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s ease;
+      border: none;
+    }
+
+    .pricing-table .card a:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(255, 78, 141, 0.6);
+    }
+
+    #testimonials {
+      padding: 80px 0;
+      background-color: white;
+    }
+
+    .common-heading h4 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--dark-color);
+      margin-bottom: 20px;
+    }
+
+    .common-heading h4 span {
+      color: var(--primary-color);
+    }
+
+    .common-heading p {
+      color: var(--gray-color);
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+
+    .slider-indicator {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    .slider-indicator img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin: 0 15px;
+      cursor: pointer;
+      border: 3px solid #e0e0e0;
+      transition: all 0.3s ease;
+    }
+
+    .slider-indicator img.active, .slider-indicator img:hover {
+      border-color: var(--primary-color);
+      transform: scale(1.1);
+    }
+
+    .slider {
+      background-color: #f8f9fa;
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .slide {
+      display: none;
+    }
+
+    .slide.active {
+      display: block;
+      animation: fadeIn 0.8s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .slide p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: var(--dark-color);
+      font-style: italic;
+      margin-bottom: 30px;
+    }
+
+    .client-info h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 5px;
+    }
+
+    .client-info span {
+      color: var(--gray-color);
+      font-weight: 500;
+    }
+
+    .footer-section {
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+      color: white;
+      padding-top: 80px;
+    }
+
+    .footer-logo img {
+      height: 60px;
+      filter: brightness(0) invert(1);
+      margin-bottom: 20px;
+    }
+
+    .footer-text p {
+      color: #b0b0b0;
+      line-height: 1.7;
+      margin-bottom: 25px;
+    }
+
+    .social-icon a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      margin-right: 15px;
+      color: white;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .facebook-bg { background-color: #3b5998; }
+    .github-bg { background-color: #333; }
+    .linkedin-bg { background-color: #0077b5; }
+    .youtube-bg { background-color: #ff0000; }
+    .instagram-bg { background-color: #e4405f; }
+
+    .social-icon a:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .footer-widget-heading h3 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 30px;
+      color: white;
+      position: relative;
+      display: inline-block;
+    }
+
+    .footer-widget-heading h3::after {
+      content: '';
+      position: absolute;
+      width: 50px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent-color), #ff9a3d);
+      bottom: -10px;
+      left: 0;
+      border-radius: 2px;
+    }
+
+    .footer-widget ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-widget ul li {
+      margin-bottom: 12px;
+    }
+
+    .footer-widget ul li a {
+      color: #b0b0b0;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .footer-widget ul li a:hover {
+      color: var(--accent-color);
+      padding-left: 5px;
+    }
+
+    .subscribe-form form {
+      display: flex;
+    }
+
+    .subscribe-form input {
+      flex: 1;
+      padding: 15px 20px;
+      border: none;
+      border-radius: 50px 0 0 50px;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: white;
+      outline: none;
+    }
+
+    .subscribe-form input::placeholder {
+      color: #b0b0b0;
+    }
+
+    .subscribe-form button {
+      background: linear-gradient(135deg, var(--accent-color), #ff9a3d);
+      color: white;
+      border: none;
+      padding: 0 25px;
+      border-radius: 0 50px 50px 0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .subscribe-form button:hover {
+      background: linear-gradient(135deg, #ff2b77, #ff8a1e);
+    }
+
+    .copyright-area {
+      background-color: rgba(0, 0, 0, 0.2);
+      padding: 25px 0;
+      margin-top: 60px;
+    }
+
+    .copyright-text p {
+      color: #b0b0b0;
+      margin: 0;
+    }
+
+    .copyright-text a {
+      color: var(--accent-color);
+      text-decoration: none;
+    }
+
+    .footer-menu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .footer-menu ul li {
+      margin-left: 20px;
+    }
+
+    .footer-menu ul li a {
+      color: #b0b0b0;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .footer-menu ul li a:hover {
+      color: var(--accent-color);
+    }
+
+    .btn_top_bottom {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(106, 17, 203, 0.4);
+      z-index: 999;
+      transition: all 0.3s ease;
+    }
+
+    .btn_top_bottom:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(106, 17, 203, 0.6);
+    }
+
+    /* 响应式设计 */
+    @media (max-width: 992px) {
+      .banner-text h1 {
+        font-size: 2.8rem;
+      }
+      
+      .common_head h4 {
+        font-size: 2.3rem;
+      }
+      
+      .footer-menu ul {
+        justify-content: center;
+        margin-top: 20px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .banner-text h1 {
+        font-size: 2.3rem;
+      }
+      
+      .common_head h4 {
+        font-size: 2rem;
+      }
+      
+      .slider-indicator img {
+        width: 60px;
+        height: 60px;
+        margin: 0 8px;
+      }
+      
+      .gallery-img {
+        height: 250px;
+      }
+      
+      .subscribe-form form {
+        flex-direction: column;
+      }
+      
+      .subscribe-form input {
+        border-radius: 50px;
+        margin-bottom: 15px;
+      }
+      
+      .subscribe-form button {
+        border-radius: 50px;
+        padding: 15px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .banner-text h1 {
+        font-size: 2rem;
+      }
+      
+      .gallery-img {
+        height: 200px;
+      }
+      
+      .slider {
+        padding: 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ================ start nav bar=========== -->
+  <nav class="navbar navbar-expand-md main-menu">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><img src="https://img.icons8.com/color/96/000000/music.png" alt="Harmony Music Logo"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars text-white"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="index.html">首页</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">关于我们</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="service.html">服务</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="service.html">活动</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">联系我们</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="404.html">404</a>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" data-bs-toggle="modal" data-bs-target="#searchModal">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Search Modal -->
+  <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="searchModalLabel">搜索音乐内容</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="#" method="GET">
+            <div class="mb-3">
+              <input type="text" class="form-control" name="query" placeholder="搜索音乐、艺术家、专辑...">
+            </div>
+            <button type="submit" class="shadow__btn w-100 mt-3 mb-2">搜索</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================end nav bar=========== -->
+  
+  <!-- start banner-section -->
+  <section id="banner" class="cmn-banner">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="wow animate__animated animate__fadeInLeft banner-text">
+            <h1>我们的服务</h1>
+            <a href="index.html">首页 |</a> <a class="active" href="service.html"> 服务</a>
+          </div>
+        </div>
+        <div class="col-md-6"></div>
+      </div>
+    </div>
+  </section>
+  <!-- end banner-section -->
+
+  <!-- ==========start gallery section ===========================================-->
+  <section id="gallery">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center mb-5">
+          <div class="common_head">
+            <h4>音乐服务内容</h4>
+            <p>我们提供全面的音乐流媒体服务，满足不同用户的需求。从个人音乐体验到企业音乐解决方案，我们都能提供专业的服务。</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="wow animate__animated animate__fadeInLeft col-md-4">
+          <div class="gallery-img">
+            <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" class="w-100" alt="流媒体服务">
+          </div>
+          <div class="gallery-text text-center mt-3">
+            <h4>音乐流媒体</h4>
+            <p>海量正版音乐库，随时随地享受高品质音乐</p>
+          </div>
+        </div>
+        <div class="wow animate__animated animate__fadeInUp col-md-4">
+          <div class="gallery-img">
+            <img src="https://images.unsplash.com/photo-1525201548942-d8732f6617a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" class="w-100" alt="个性化推荐">
+          </div>
+          <div class="gallery-text text-center mt-3">
+            <h4>个性化推荐</h4>
+            <p>基于AI算法的智能推荐，发现您喜欢的新音乐</p>
+          </div>
+        </div>
+        <div class="wow animate__animated animate__fadeInRight col-md-4">
+          <div class="gallery-img">
+            <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" class="w-100" alt="离线下载">
+          </div>
+          <div class="gallery-text text-center mt-3">
+            <h4>离线下载</h4>
+            <p>下载音乐到本地，无网络时也能享受音乐</p>
+          </div>
+        </div>
+        <div class="wow animate__animated animate__fadeInLeft col-md-4 mt-4">
+          <div class="gallery-img">
+            <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" class="w-100" alt="高音质体验">
+          </div>
+          <div class="gallery-text text-center mt-3">
+            <h4>高音质体验</h4>
+            <p>支持无损音质，还原音乐最真实的声音</p>
+          </div>
+        </div>
+        <div class="wow animate__animated animate__fadeInUp col-md-4 mt-4">
+          <div class="gallery-img">
+            <img src="https://images.unsplash.com/photo-1518609878373-06d740f60d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" class="w-100" alt="多设备同步">
+          </div>
+          <div class="gallery-text text-center mt-3">
+            <h4>多设备同步</h4>
+            <p>在手机、电脑、平板等设备间无缝切换</p>
+          </div>
+        </div>
+        <div class="wow animate__animated animate__fadeInRight col-md-4 mt-4">
+          <div class="gallery-img">
+            <img src="https://images.unsplash.com/photo-1511735111819-9a3f7709049c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" class="w-100" alt="独家内容">
+          </div>
+          <div class="gallery-text text-center mt-3">
+            <h4>独家内容</h4>
+            <p>独家音乐、专辑和现场演出录音</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ==========end gallery section ===========================================-->
+
+  <!-- pricing start -->
+  <section id="pricing">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7 m-auto">
+          <div class="wow animate__animated animate__fadeInUp common_head mb-5">
+            <h4 class="text-center">会员计划</h4>
+            <p class="text-center">选择适合您的会员计划，享受无广告、高品质音乐体验。所有计划均包含离线下载、高音质流媒体和跨设备同步功能。</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="pricing-table">
+            <div class="row">
+              <div class="col-sm-4">
+                <div class="wow animate__animated animate__fadeInLeft card text-center">
+                  <div class="title">
+                    <i class="fa fa-music" aria-hidden="true"></i>
+                    <h2>基础版</h2>
+                  </div>
+                  <div class="price">
+                    <h4><sup>¥</sup>25</h4>
+                    <p>每月</p>
+                  </div>
+                  <div class="option">
+                    <ul>
+                      <li><i class="fa fa-check" aria-hidden="true"></i> 标准音质音乐</li>
+                      <li><i class="fa fa-check" aria-hidden="true"></i> 无广告收听</li>
+                      <li><i class="fa fa-check" aria-hidden="true"></i> 个性化推荐</li>
+                      <li><i class="fa fa-check" aria-hidden="true"></i> 创建15个歌单</li>
+                    </ul>
+                  </div>
+                  <a href="contact.html">立即订阅</a>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="wow animate__animated animate__fadeInUp card text-center">
+                  <div class="title">
+                    <i class="fa fa-headphones" aria-hidden="true"></i>
+                    <h2>高级版</h2>
+                  </div>
+                  <div class="price">
+                    <h4><sup>¥</sup>50</h4>
+                    <p>每月</p>
+                  </div>
+                  <div class="option">
+                    <ul>
+                      <li><i class="fa fa-check" aria-hidden="true"></i> 高保真音质</li>
+                      <li><i class="fa fa-check" aria-hidden="true"></i> 离线下载</li>
+                      <li><i class="fa fa-check" aria-hidden="true"></i> 创建无限歌单</li>
+                      <li><i class="fa fa-check" aria-hidden="true"></i> 多设备同时使用</li>
+                    </ul>
+                  </div>
+                  <a href="contact.html">立即订阅</a>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="wow animate__animated animate__fadeInRight card text-center">
+                  <div class="title">
+                    <i class="fa fa-crown" aria-hidden="true"></i>
+                    <h2>家庭版</h2>
+                  </div>
+                  <div class="price">
+                    <h4><sup>¥</sup>100</h4>
+                    <p>每月</p>
+                  </div>
+                  <div class="option">
+                    <ul>
+                      <li><i class="fa fa-check" aria-hidden="true"></i> 6个独立账户</li>
+                      <li><i class="fa fa-check" aria-hidden="true"></i> 超高音质流媒体</li>
+                      <li><i class="fa fa-check" aria-hidden="true"></i> 独家音乐内容</li>
+                      <li><i class="fa fa-check" aria-hidden="true"></i> 优先客户支持</li>
+                    </ul>
+                  </div>
+                  <a href="contact.html">立即订阅</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- pricing end -->
+
+  <!-- testimonial start -->
+  <section id="testimonials" class="testimonials">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <div class="wow animate__animated animate__fadeInLeft common-heading mb-5">
+            <h4 class="pre-title">用户评价 <span>关于我们</span></h4>
+            <p>超过300万用户选择了Harmony Music。以下是一些用户对我们服务的评价，他们的满意是我们前进的动力。</p>
+          </div>
+        </div>
+        <div class="wow animate__animated animate__fadeInRight col-md-7">
+          <div class="slider-indicator" data-wow-delay=".2s">
+            <img src="https://randomuser.me/api/portraits/women/32.jpg" class="active" alt="img" data-id="0">
+            <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="img" data-id="1">
+            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="img" data-id="2">
+          </div>
+
+          <div class="slider">
+            <div class="slide active">
+              <p>
+                "作为音乐爱好者，我尝试过多个音乐平台，但Harmony Music给了我最好的体验。音质一流，推荐算法准确，总能发现我喜欢的新音乐。家庭版让全家人都能享受高质量音乐，物超所值！"
+              </p>
+              <div class="client-info">
+                <h3>张雅婷</h3>
+                <span>音乐教师，使用2年</span>
+              </div>
+            </div>
+            <div class="slide">
+              <p>
+                "我每天通勤时间很长，Harmony Music的离线下载功能拯救了我。音质选择多样，从标准到超高音质，满足不同场景需求。歌单创建和管理功能也很直观，是我日常生活不可或缺的一部分。"
+              </p>
+              <div class="client-info">
+                <h3>王明浩</h3>
+                <span>软件工程师，使用1年</span>
+              </div>
+            </div>
+            <div class="slide">
+              <p>
+                "作为一个独立音乐人，我很欣赏Harmony Music对独立艺术家的支持。平台不仅让我发现了很多优秀的独立音乐，还提供了展示自己作品的机会。音乐库非常全面，从经典到最新流行应有尽有。"
+              </p>
+              <div class="client-info">
+                <h3>李思雨</h3>
+                <span>独立音乐人，使用3年</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- testimonial end -->
+
+  <!-- footer start -->
+  <footer class="footer-section">
+    <div class="container">
+      <div class="wow animate__animated animate__fadeInUp footer-content pt-5 pb-5" data-wow-delay=".2s">
+        <div class="row">
+          <div class="col-lg-4 col-xl-4 col-lg-4 mb-50">
+            <div class="footer-widget">
+              <div class="footer-logo">
+                <a class="navbar-brand" href="#"><img src="https://img.icons8.com/color/96/000000/music.png" alt="Harmony Music Logo"></a>
+              </div>
+              <div class="footer-text">
+                <p>Harmony Music致力于为用户提供最优质的音乐流媒体服务。我们相信音乐能够连接人与人，丰富生活体验。加入我们，探索无限音乐世界。</p>
+              </div>
+              <div class="social-icon d-flex">
+                <a href="#"><i class="fab fa-facebook-f facebook-bg"></i></a>
+                <a href="#"><i class="fab fa-twitter twitter-bg"></i></a>
+                <a href="#"><i class="fab fa-instagram instagram-bg"></i></a>
+                <a href="#"><i class="fab fa-youtube youtube-bg"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-xl-4 col-lg-4 col-md-6 mb-30">
+            <div class="footer-widget">
+              <div class="footer-widget-heading">
+                <h3>快速链接</h3>
+              </div>
+              <ul>
+                <li><a href="index.html">首页</a></li>
+                <li><a href="about.html">关于我们</a></li>
+                <li><a href="service.html">服务</a></li>
+                <li><a href="service.html">音乐活动</a></li>
+                <li><a href="contact.html">联系我们</a></li>
+                <li><a href="#">会员计划</a></li>
+                <li><a href="#">帮助中心</a></li>
+                <li><a href="#">最新动态</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-4 col-xl-4 col-lg-4 col-md-6 mb-50">
+            <div class="footer-widget">
+              <div class="footer-widget-heading">
+                <h3>订阅资讯</h3>
+              </div>
+              <div class="footer-text mb-25">
+                <p>订阅我们的资讯，第一时间获取最新音乐推荐、独家内容和特别优惠。</p>
+              </div>
+              <div class="subscribe-form">
+                <form action="#">
+                  <input type="text" placeholder="请输入您的邮箱">
+                  <button><i class="fab fa-telegram-plane"></i></button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="copyright-area">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-lg-6 text-center text-lg-left">
+            <div class="copyright-text">
+              <p>Copyright &copy; 2023 Harmony Music. 保留所有权利。</p>
+            </div>
+          </div>
+          <div class="col-lg-6 col-lg-6 d-none d-lg-block text-right">
+            <div class="footer-menu">
+              <ul>
+                <li><a href="index.html">首页</a></li>
+                <li><a href="#">服务条款</a></li>
+                <li><a href="#">隐私政策</a></li>
+                <li><a href="#">Cookie政策</a></li>
+                <li><a href="contact.html">联系我们</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- footer section end -->
+
+  <!-- btn_top_bottom part start -->
+  <div class="btn_top_bottom">
+    <i class="fa-solid fa-arrow-up-long"></i>
+  </div>
+  <!-- btn_top_bottom part end -->
+
+  <!-- =====================js-bootstrap==================================== -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    // 简单计数器动画
+    $(document).ready(function () {
+      // 滚动到顶部按钮
+      $('.btn_top_bottom').click(function () {
+        $('html, body').animate({ scrollTop: 0 }, 800);
+      });
+
+      // 显示/隐藏滚动到顶部按钮
+      $(window).scroll(function () {
+        if ($(this).scrollTop() > 300) {
+          $('.btn_top_bottom').fadeIn();
+        } else {
+          $('.btn_top_bottom').fadeOut();
+        }
+      });
+
+      // 轮播功能
+      const slides = document.querySelector(".slider").children;
+      const indicatorImages = document.querySelector(".slider-indicator").children;
+      let currentIndex = 0;
+
+      // 函数：切换幻灯片
+      function changeSlide(index) {
+        // 移除所有指示器和幻灯片的 'active' 类
+        for (let i = 0; i < indicatorImages.length; i++) {
+          indicatorImages[i].classList.remove("active");
+          slides[i].classList.remove("active");
+        }
+
+        // 添加 'active' 类到当前幻灯片和指示器
+        indicatorImages[index].classList.add("active");
+        slides[index].classList.add("active");
+        currentIndex = index;
+      }
+
+      // 为指示器图片添加点击事件
+      for (let i = 0; i < indicatorImages.length; i++) {
+        indicatorImages[i].addEventListener("click", function () {
+          changeSlide(i);
+        });
+      }
+
+      // 自动轮播
+      function autoPlay() {
+        currentIndex = (currentIndex + 1) % slides.length;
+        changeSlide(currentIndex);
+      }
+
+      // 每5秒切换一次幻灯片
+      setInterval(autoPlay, 5000);
+
+      // 初始化轮播
+      changeSlide(0);
+      
+      // 添加WOW动画支持
+      function initAnimations() {
+        const elements = document.querySelectorAll('.wow');
+        elements.forEach(element => {
+          element.classList.add('animate__animated');
+        });
+      }
+      
+      initAnimations();
+    });
+  </script>
+</body>
+
+</html>
